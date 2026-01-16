@@ -1,0 +1,29 @@
+:root {
+  --bg: #0f0f0f; /* fondo negro */
+  --texto: #ffffff; /* texto blanco */
+  --tono-apagado: #aaaaaa; /* tono apagado gris claro */
+  --azul-500: #29C6FF; /* azul principal */
+  --azul-300: #7DD3FF; /* azul claro */
+  --rosa-500: #CD2B6E; /* rosa principal */
+  --rosa-300: #E67A9F; /* rosa claro */
+  --fondo-tarjeta: #1a1a1a; /* gris oscuro para tarjetas */
+  --glass: rgba(15, 15, 15, 0.6);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  --texto-boton: #ffffff;
+  --focus: rgba(41, 198, 255, 0.12);
+}
+
+.light-mode {
+  --bg: #ffffff; /* fondo blanco */
+  --texto: #0f0f0f; /* color texto negro */
+  --tono-apagado: #666666; /* tono apagado gris */
+  --azul-500: #29C6FF; /* azul principal */
+  --azul-300: #7DD3FF; /* azul claro */
+  --rosa-500: #CD2B6E; /* rosa principal */
+  --rosa-300: #E67A9F; /* rosa claro */
+  --fondo-tarjeta: #ffffff;
+  --glass: rgba(255, 255, 255, 0.65);
+  --shadow: 0 8px 24px rgba(15, 15, 15, 0.08);
+  --texto-boton: #ffffff;
+  --focus: rgba(41, 198, 255, 0.18);
+}
