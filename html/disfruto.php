@@ -7,72 +7,20 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <script src="../js/darkTheme.js"></script>
 </head>
 
 <body>
-    <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="../index.html">Manucho 27</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="../index.html">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="sobre-mi.html">Sobre mi</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Temas
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="prisionero.html">Prisionero</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="una-chica.html">Una chica</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item active" aria-current="page" href="disfruto.html">Disfruto</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="vimos-madriz.html">Vimos Madriz</a></li>
-                            <li><a class="dropdown-item" href="si-responde-mis-stories.html">Si responde mis stories</a></li>
-                            <li><a class="dropdown-item" href="una-vez-alli.html">Una vez allí</a></li>
-                            <li><a class="dropdown-item" href="amor-caducado.html">Amor caducado</a></li>
-                            <li><a class="dropdown-item" href="fueron.html">Fueron</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="ponte-cascos.html">Ponte cascos</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="tienda.html">Tienda</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contacto.html">Contacto</a>
-                    </li>
-                </ul>
-                
-            </div>
-        </div>
-    </nav>
+    <?php include 'plantillas/nav.php'; ?>
 
     <div class="container mt-5">
         <h1>Disfruto</h1>
         <p>Contenido de la canción Disfruto.</p>
     </div>
 
-    <script src="../js/bootstrap.bundle.min.js"></script>
+    <?php include 'plantillas/footer.php'; ?>
+<script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../js/main.js"></script>
 </body>
 
 </html>

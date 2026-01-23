@@ -1,6 +1,6 @@
 :root {
-  --bg: #f6fbf6; /* fondo claro */
-  --texto: #233029; /* color texto */
+  --bg: #f8fdff; /* fondo claro */
+  --texto: #0f0f0f; /* color texto */
   --tono-apagado: #017199; /* tono apagado */
   --azul-principal: #29C6FF; /* azul principal */
   --azul-claro: #6fd9ff; /* azul claro */
@@ -22,17 +22,18 @@
 }
 
 .dark-mode {
-  --bg: #070707; /* fondo oscuro */
-  --texto: #e8f8ea; /* texto claro */
-  --tono-apagado: #9aa69a;
-  --verde-500: #34d058;
-  --verde-300: #66e07f;
-  --marron-700: #000000; /* marrón en oscuro */
-  --fondo-tarjeta: #0f0f0f;
-  --glass: rgba(10, 10, 10, 0.6);
-  --shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-  --texto-boton: #ffffff;
-  --focus: rgba(52, 208, 88, 0.12);
+  --bg: #0b141a; /* fondo principal */
+  --texto: #e9f1f5; /* texto principal */
+  --tono-apagado: #4fa3c4; /* azul apagado adaptado */
+  --azul-principal: #29c6ff; /* se mantiene, ya funciona en dark */
+  --azul-claro: #6fd9ff; /* para hovers y highlights */
+  --rosa-secundario: #e14b8a; /* rosa con más luminosidad */
+  --fondo-tarjeta: #121e26; /* cards */
+  --glass: rgba(18, 30, 38, 0.65);
+  --shadow-azul: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --texto-boton: #0b141a; /* botones claros */
+  --texto-boton-oscuro: #ffffff; /* botones oscuros */
+  --focus: rgba(41, 198, 255, 0.35);
 
   /* Colores de las redes sociales */
   --verde-spoti: #1ED760; /* verde spotify */
@@ -43,41 +44,56 @@
   --azul-fb: #3B579D; /*color facebook*/
   --gris-x: rgb(158, 158, 158); /*gris x*/
 }
-/*-------- Body y generales --------*/
+
+/*----- Body y generales -----*/
 body {
-  background-color: var(--bg);
+  background-color: var(--bg)!important;
 }
 
 /*Header*/
 #menu{
-  background-color: var(--bg);
-  color: var(--texto);
+  background-color: var(--bg)!important;
+}
+
+#menu a{
+  color: var(--texto)!important;
+}
+
+#menu .navbar-nav .nav-link{
+  color: var(--texto)!important;
+}
+
+#logo_menu{
+  width: 40px;
+  height: 40px;
 }
 
 /*Footer*/
+footer{
+  background-color: var(--bg)!important;
+}
 
+footer .container p{
+  color: var(--texto)!important;
+}
 
-/* Pagina principal */
+/*----- Pagina principal -----*/
 #pag_principal{
   width: 100%;
   display: flex;
   flex-direction: column;
-
   background-image: url(../img/Manu/P1210213.JPG);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  min-height: 100vh;
 }
 
 #pag_principal #texto{
   display: flex;
-  width: 25%;
-  margin-left: 46%;
   flex-direction: column;
   align-items: center;
   position: relative;
-  padding-top: 23%;
-  padding-bottom: 13%;
 }
 
 #pag_principal #texto #bprin{
@@ -91,19 +107,73 @@ body {
   text-align: center;
   justify-content: center;
   align-items: center;
-  color: white;
-  border: 3px solid #29C6FF;
+  color: var(--texto-boton);
+  border: 3px solid var(--azul-principal);
   padding: 1vh;
   border-radius: 50px;
   transition: border-color 500ms linear, background-color 500ms linear, color 500ms linear;
 }
 
 #pag_principal #texto #bprin .spoti:hover{
-  color: #0F0F0F;
-  background-color: #1ED760;
-  border-color: #1ED760;
+  color: var(--texto-boton);
+  background-color: var(--verde-spoti);
+  border-color: var(--verde-spoti);
 }
 
 #pag_principal #texto #bprin .sm:hover{
-  background-color: #29C6FF;
+  background-color: var(--azul-principal);
+}
+
+/* Utilidades de espaciado (Bootstrap-friendly) */
+.pt-vh-20 { padding-top: 20vh !important; }
+@media (min-width: 768px) {
+  .pt-vh-md-60 { padding-top: 60vh !important; }
+}
+.pb-pct-13 { padding-bottom: 13% !important; }
+
+/* Sobrescribir colores de foco/activo de Bootstrap para usar la paleta del proyecto */
+.btn-outline-primary {
+  color: var(--azul-principal) !important;
+  border-color: var(--azul-principal) !important;
+}
+.btn-outline-primary:hover {
+  color: var(--texto-boton) !important;
+  background-color: var(--azul-principal) !important;
+  border-color: var(--azul-principal) !important;
+}
+.btn-outline-primary:focus, .btn-outline-primary.focus {
+  color: var(--texto-boton) !important;
+  background-color: var(--azul-principal) !important;
+  border-color: var(--azul-principal) !important;
+  box-shadow: 0 0 0 .25rem var(--focus) !important;
+}
+.btn-outline-primary:active, .btn-outline-primary.active {
+  color: var(--texto-boton) !important;
+  background-color: var(--azul-principal) !important;
+  border-color: var(--azul-principal) !important;
+  box-shadow: none !important;
+}
+
+/* Dropdown items: usar el azul principal en foco/activo */
+.dropdown-item:focus, .dropdown-item.active {
+  background-color: var(--azul-principal) !important;
+  color: var(--texto-boton) !important;
+}
+
+/* Evitar outline azul por defecto en enlaces del nav al hacer focus */
+.nav-link:focus {
+  box-shadow: 0 0 0 .15rem var(--focus) !important;
+}
+
+/* Subrayado del item activo en el nav */
+.nav-link.active {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 3px;
+  color: var(--azul-principal) !important;
+}
+.dropdown-item.active {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 3px;
 }
