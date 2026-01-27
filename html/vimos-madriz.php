@@ -18,7 +18,7 @@
         <p>Contenido de la canción Vimos Madriz.</p>
     </div>
 
-    <?php include 'plantillas/footer.php'; ?>
+    <?php include '../plantillas/footer.php'; ?>
 <script src="../js/bootstrap.bundle.min.js"></script>
 <script src="../js/main.js"></script>
 </body>

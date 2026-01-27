@@ -3,6 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="Página principal de la web de Manucho 27, artista del mundillo del hip hop. En esta, podrás consultar información sobre el y su música. Disfruta"/>
+    <meta name="keywords" content="Manucho 27, Manucho, Hip Hop, Rap, Artista, Música, Álbumes, Canciones">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php include 'plantillas/iconos.php'; ?>
     <title>Manucho 27 - Home</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -11,7 +15,7 @@
 </head>
 
 <body>
-    <?php include 'html/plantillas/nav.php'; ?>
+    <?php include 'plantillas/nav.php'; ?>
     <div id="pag_principal" class="container-fluid min-vh-100 p-0">
         <!-- Fondo mediante CSS: ../img/Manu/P1210213.JPG -->
         <div class="row w-100 m-0">
@@ -25,8 +29,22 @@
         </div>
     </div>
 
+    <!-- TEMPLATE (no se ve en pantalla) -->
+    <template id="tarjeta-red-social">
+        <div class="red-social" id="red">
+            <img class="imgredes" src="" alt="">
+            <p></p>
+            <div class="logoredes">
+                <img src="" alt="">
+            </div>
+            <a href="" target="_blank">Escuchar</a>
+        </div>
+    </template>
 
-    <?php include 'html/plantillas/footer.php'; ?>
+    <div id="contenedor-redes"></div>
+    <script src="plantillas/tarjetaRedes.js"></script>
+
+    <?php include 'plantillas/footer.php'; ?>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
 </body>
