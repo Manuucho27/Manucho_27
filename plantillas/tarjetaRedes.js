@@ -18,7 +18,7 @@ const data = [
         img: "fotos/foto3.jpg",
         texto: "Mírame en",
         logo: "fotos/lyoutube.png",
-        link: "https://youtube.com"
+        link: "https://www.youtube.com/@manucho27"
     },
     {
         id: "twitter",

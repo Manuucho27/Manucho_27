@@ -41,8 +41,71 @@
         </div>
     </template>
 
-    <div id="contenedor-redes"></div>
-    <script src="plantillas/tarjetaRedes.js"></script>
+    <div id="redes">
+        <div id="falta">
+            <div id="spotify">
+                <img class="imgredes" src="fotos/P1210180.JPG" alt="">
+                <p>Escúchame en </p>
+                <div class="logoredes">
+                    <img src="fotos/lspoti.png" alt="">
+                </div>
+                <a href="https://open.spotify.com/intl-es/artist/27K3MUgWcpbPj4RSYNxcew?si=709fe9d280204d84" target="_blank">Escuchar</a>
+            </div>
+            <div id="yt">
+                <img class="imgredes" src="fotos/P1210181.JPG" alt="">
+                <p>Escúchame en </p>
+                <div class="logoredes">
+                    <img src="fotos/lyt.png" alt="">
+                </div>
+                <a href="https://www.youtube.com/channel/UCXFnGAHp5vZL1BHOqdyc2vw" target="_blank">Escuchar</a>
+            </div>
+            <div id="ig">
+                <img class="imgredes" src="fotos/P1210185.JPG" alt="">
+                <p>Sígueme en </p>
+                <div class="logoredes">
+                    <img src="fotos/lig.webp" alt="">
+                </div>
+                <a href="https://www.instagram.com/manu.uu27/" target="_blank">Seguir</a>
+            </div>
+            <div id="am">
+                <img class="imgredes" src="fotos/P1210189.JPG" alt="">
+                <p>Escúchame en </p>
+                <div class="logoredes">
+                    <img class="bordeb" src="fotos/lam.png" alt="">
+                </div>
+                <a href="https://music.apple.com/es/artist/manucho-27/1706972723" target="_blank">Escuchar</a>
+            </div>
+        </div>
+        <div id="fbajo">
+            <div id="tidal">
+                <img class="imgredes" src="fotos/P1210193.JPG" alt="">
+                <p>Escúchame en </p>
+                <div class="logoredes">
+                    <img class="bordeb" src="fotos/ltidal.png" alt="">
+                </div>
+                <a href="https://tidal.com/browse/artist/42021329" target="_blank">Escuchar</a>
+            </div>
+            <div id="fb">
+                <img class="imgredes" src="fotos/P1210191.JPG" alt="">
+                <p>Sígueme en </p>
+                <div class="logoredes">
+                    <img src="fotos/lfb.png" alt="">
+                </div>
+                <a href="https://es-es.facebook.com/people/Manuel-Moreno-Bell%C3%B3n/pfbid02eZWvkugrWA61jGsdrDkxz7LJ8QKx32g4bA1qxsP5xPER6cH4NuSFekEYSTHG1kSWl/" target="_blank">Seguir</a>
+            </div>
+            <div id="x">
+                <img class="imgredes" src="fotos/P1210192.JPG" alt="">
+                <p>Sígueme en </p>
+                <div class="logoredes">
+                    <img class="borden" src="fotos/lx.png" alt="">
+                </div>
+                <a href="https://twitter.com/manucho_27" target="_blank">Seguir</a>
+            </div>
+        </div>
+    </div>
+
+    <!--<div id="contenedor-redes"></div>
+    <script src="plantillas/tarjetaRedes.js"></script>-->
 
     <?php include 'plantillas/footer.php'; ?>
     <script src="js/bootstrap.bundle.min.js"></script>
