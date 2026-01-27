@@ -8,10 +8,11 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <script src="../js/darkTheme.js"></script>
+    <?php include '../plantillas/iconos.php'; ?>
 </head>
 
 <body>
-    <?php include 'plantillas/nav.php'; ?>
+    <?php include '../plantillas/nav.php'; ?>
 
     <div class="container mt-5">
         <h1>Tienda</h1>
