@@ -31,16 +31,24 @@
 
     <!-- TEMPLATE (no se ve en pantalla) -->
     <template id="tarjeta-red-social">
-        <div class="red-social" id="red">
-            <img class="imgredes" src="" alt="">
-            <p></p>
-            <div class="logoredes">
-                <img src="" alt="">
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="tarjeta shadow-sm red-social-tarjeta">
+                <img class="tarjeta-img-top imgredes" src="" alt="">
+                <div class="tarjeta-body p-3 text-center">
+                    <p class="mb-2"></p>
+                    <div class="logoredes mb-2">
+                        <img src="" alt="">
+                    </div>
+                    <a class="btn btn-primary btn-sm px-4 rounded-pill" href="" target="_blank">Escuchar</a>
+                </div>
             </div>
-            <a href="" target="_blank">Escuchar</a>
         </div>
     </template>
 
+    <div id="contenedor-redes" class="row gx-3 gy-4 px-2"></div>
+    <script src="plantillas/tarjetaRedes.js"></script>
+
+<!--
     <div id="redes">
         <div id="falta">
             <div id="spotify">
@@ -102,10 +110,8 @@
                 <a href="https://twitter.com/manucho_27" target="_blank">Seguir</a>
             </div>
         </div>
-    </div>
-
-    <!--<div id="contenedor-redes"></div>
-    <script src="plantillas/tarjetaRedes.js"></script>-->
+    </div> 
+-->
 
     <?php include 'plantillas/footer.php'; ?>
     <script src="js/bootstrap.bundle.min.js"></script>
