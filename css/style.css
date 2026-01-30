@@ -24,6 +24,7 @@
   --verde-spoti: #1ED760;
   /* verde spotify */
   --negro-tidal: black;
+  --texto-tidal: white;
   /* negro tidal */
   --rojo-apple-music: rgb(255, 65, 65);
   /*rojo apple music*/
@@ -66,6 +67,7 @@
   --verde-spoti: #1ED760;
   /* verde spotify */
   --negro-tidal: white;
+  --texto-tidal: black;
   /* negro tidal */
   --rojo-apple-music: rgb(255, 65, 65);
   /*rojo apple music*/
@@ -391,7 +393,7 @@ footer .container p {
 }
 
 #tidal .btn:hover {
-  color: white;
+  color: var(--texto-tidal);
   background-color: transparent;
   border-color: transparent;
 }

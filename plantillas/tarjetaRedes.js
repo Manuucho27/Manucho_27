@@ -59,7 +59,7 @@ const data = [
         id: "am",
         img: "img/Manu/P1210242.webp",
         texto: "Escúchame en",
-        logo: "img/logos/lam.png",
+        logo: "img/logos/apple-logo.webp",
         link: "https://music.apple.com",
         textoBtn: "Apple Music"
     }
