@@ -94,12 +94,20 @@ body {
   background-color: var(--bg) !important;
 }
 
+span{
+  color: var(--tono-apagado);
+}
+
 /*Header*/
-#menu {
+#menu, .dropdown-menu {
   background-color: var(--bg) !important;
 }
 
-#menu a {
+.dropdown-menu li a:hover{
+  background-color: var(--tono-apagado)!important;
+}
+
+#menu a{
   color: var(--texto) !important;
 }
 

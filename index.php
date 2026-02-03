@@ -23,7 +23,7 @@
                 <h1>MANUCHO 27</h1>
                 <div id="bprin" class="d-flex justify-content-around w-75">
                     <a class="spoti" href="https://open.spotify.com/intl-es/artist/27K3MUgWcpbPj4RSYNxcew?si=709fe9d280204d84" target="_blank">SPOTIFY</a>
-                    <a class="sm" href="biografia.html">SOBRE MÍ</a>
+                    <a class="sm" href="html/sobre-mi.php">SOBRE MÍ</a>
                 </div>
             </div>
         </div>

@@ -15,15 +15,15 @@
         return in_array($actual, $paginas) ? 'active' : '';
     }
     ?>
-    <div class="container-fluid d-flex px-4">
-        <a class="navbar-brand" href="/Manucho27/index.php"><img id="logo_menu" src="/Manucho27/img/iconos/favicon.png" alt="">Manucho 27</a>
+    <div class="container-fluid d-flex px-4 align-items-center">
+        <a class="navbar-brand d-flex align-items-center" href="/Manucho27/index.php"><img id="logo_menu" class="me-2" src="/Manucho27/img/iconos/favicon.png" alt="">MANUCHO<span>27</span></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse align-items-center justify-content-between" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <div class="collapse navbar-collapse align-items-center" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link <?php echo activo('index.php', $pagina_actual); ?>" href="/Manucho27/index.php">Inicio</a>
                 </li>
