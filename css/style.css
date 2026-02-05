@@ -197,13 +197,72 @@ footer .container p {
   gap: .5rem
 }
 
-.footer-social a {
-  color: var(--texto);
-  text-decoration: none
+.footer-social h2 {
+  font-size: 1.2rem;
+  margin: 0 0 1rem 0;
+  color: var(--tono-apagado);
 }
 
-.footer-social a:hover {
-  color: var(--azul-principal)
+.enlaces-redes-f {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.enlaces-redes-f li {
+  display: inline-block;
+}
+
+.enlaces-redes-f a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--fondo-tarjeta);
+  color: var(--texto);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-azul);
+}
+
+.enlaces-redes-f a:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.enlaces-redes-f a i {
+  font-size: 1.5rem;
+}
+
+/* Colores específicos para cada red social */
+.enlace-red.instagram:hover {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: var(--texto-boton);
+}
+
+.enlace-red.facebook:hover {
+  background-color: var(--azul-fb);
+  color: var(--texto-boton);
+}
+
+.enlace-red.twitter:hover {
+  background-color: var(--gris-x);
+  color: var(--texto-boton);
+}
+
+.enlace-red.youtube:hover {
+  background-color: var(--rojo-yt);
+  color: var(--texto-boton);
+}
+
+.enlace-red.spotify:hover {
+  background-color: var(--verde-spoti);
+  color: var(--texto-boton);
 }
 
 .footer-bottom {
@@ -335,7 +394,7 @@ footer .container p {
   color: #fff;
   font-weight: 700;
   box-shadow: 0 6px 18px rgba(46, 194, 255, 0.18);
-  transition: border-color 500ms linear, background-color 500ms linear, color 500ms linear;
+  transition: border-color 500ms linear, background-color 500ms linear, color 500ms linear, transform 500ms linear;
 }
 
 @media (max-width: 576px) {
@@ -380,48 +439,56 @@ footer .container p {
   color: #0F0F0F;
   background-color: transparent;
   border-color: transparent;
+  transform: scale(1.1);
 }
 
 #yt .btn:hover {
   color: #0F0F0F;
   background-color: transparent;
   border-color: transparent;
+  transform: scale(1.1);
 }
 
 #ig .btn:hover {
   color: #0F0F0F;
   background-color: transparent;
   border-color: transparent;
+  transform: scale(1.1);
 }
 
 #am .btn:hover {
   color: #0F0F0F;
   background-color: transparent;
   border-color: transparent;
+  transform: scale(1.1);
 }
 
 #tidal .btn:hover {
   color: var(--texto-tidal);
   background-color: transparent;
   border-color: transparent;
+  transform: scale(1.1);
 }
 
 #fb .btn:hover {
   color: #0F0F0F;
   background-color: transparent;
   border-color: transparent;
+  transform: scale(1.1);
 }
 
 #x .btn:hover {
   color: #0F0F0F;
   background-color: transparent;
   border-color: transparent;
+  transform: scale(1.1);
 }
 
 #tiktok .btn:hover {
   color: #0F0F0F;
   background-color: transparent;
   border-color: transparent;
+  transform: scale(1.1);
 }
 
 

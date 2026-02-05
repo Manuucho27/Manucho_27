@@ -12,11 +12,42 @@
 </head>
 
 <body>
+    <?php
+    include '../php/config.php';
+    $result = $conn->query("SELECT * FROM productos");
+    ?>
     <?php include '../plantillas/nav.php'; ?>
 
     <div class="container mt-5">
         <h1>Tienda</h1>
-        <p>Contenido de la página Tienda.</p>
+        <?php if (isset($_GET['pedido'])) echo "<div class='alert alert-success'>Pedido completado con éxito.</div>"; ?>
+        <div class="row">
+            <?php while ($row = $result->fetch_assoc()) { ?>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="data:<?php echo $row['imagen_tipo']; ?>;base64,<?php echo base64_encode($row['imagen']); ?>" class="card-img-top" alt="<?php echo $row['nombre']; ?>">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $row['nombre']; ?></h5>
+                            <p class="card-text"><?php echo $row['descripcion']; ?></p>
+                            <p class="card-text">Precio: <?php echo $row['precio']; ?>€</p>
+                            <p class="card-text">Stock: <?php echo $row['stock']; ?></p>
+                            <?php if (isset($_SESSION['user_id'])) { ?>
+                                <form method="POST" action="carrito.php">
+                                    <input type="hidden" name="producto_id" value="<?php echo $row['id']; ?>">
+                                    <div class="mb-2">
+                                        <label>Cantidad</label>
+                                        <input type="number" name="cantidad" value="1" min="1" max="<?php echo min(2, $row['stock']); ?>" class="form-control">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Añadir al Carrito</button>
+                                </form>
+                            <?php } else { ?>
+                                <p>Inicia sesión para comprar.</p>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
     </div>
 
     <?php include '../plantillas/footer.php'; ?>

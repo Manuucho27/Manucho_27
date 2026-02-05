@@ -4,7 +4,6 @@
         <h3>Páginas principales</h3>
         <ul>
             <li><a href="/Manucho27/">Inicio</a></li>
-            <li><a href="/Manucho27/index.php">Index (entrada)</a></li>
         </ul>
 
         <h3>Sección: Páginas</h3>

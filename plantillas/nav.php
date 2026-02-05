@@ -16,7 +16,7 @@
     }
     ?>
     <div class="container-fluid d-flex px-4 align-items-center">
-        <a class="navbar-brand d-flex align-items-center" href="/Manucho27/index.php"><img id="logo_menu" class="me-2" src="/Manucho27/img/iconos/favicon.png" alt="">MANUCHO<span>27</span></a>
+        <a class="navbar-brand d-flex align-items-center" href="/Manucho27/"><img id="logo_menu" class="me-2" src="/Manucho27/img/iconos/favicon.png" alt="">MANUCHO<span>27</span></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -81,6 +81,18 @@
                         <li><a class="dropdown-item" id="modo-oscuro" onclick="cambiaModoColor()">Cambiar a modo oscuro</a></li>
                     </ul>
                 </li>
+                <?php
+                if (isset($_SESSION['user_id'])) {
+                    echo '<li class="nav-item"><a class="nav-link" href="/Manucho27/html/logout.php">Logout</a></li>';
+                    if ($_SESSION['rol'] == 'admin') {
+                        echo '<li class="nav-item"><a class="nav-link" href="/Manucho27/html/admin.php">Admin</a></li>';
+                    }
+                    echo '<li class="nav-item"><a class="nav-link" href="/Manucho27/html/carrito.php">Carrito</a></li>';
+                } else {
+                    echo '<li class="nav-item"><a class="nav-link" href="/Manucho27/html/login.php">Login</a></li>';
+                    echo '<li class="nav-item"><a class="nav-link" href="/Manucho27/html/registro.php">Registro</a></li>';
+                }
+                ?>
             </ul>
 
         </div>
