@@ -40,21 +40,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
     <?php include '../plantillas/nav.php'; ?>
-    <div class="container mt-5">
-        <h2>Login</h2>
-        <?php if (isset($error)) echo "<div class='alert alert-danger'>$error</div>"; ?>
-        <form method="POST">
-            <div class="mb-3">
-                <label>Email</label>
-                <input type="email" name="email" class="form-control" required>
+    <div class="container mt-5 auth-container">
+        <div class="card auth-card">
+            <div class="card-body">
+                <h2>Login</h2>
+                <?php if (isset($error)) echo "<div class='alert alert-danger' role='alert' aria-live='assertive'>$error</div>"; ?>
+                <form method="POST" aria-label="Formulario de inicio de sesión">
+                    <div class="mb-3">
+                        <label for="email">Email</label>
+                        <input id="email" type="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password">Contraseña</label>
+                        <input id="password" type="password" name="password" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                </form>
+                <p class="mt-3"><a class="muted-link" href="registro.php">¿No tienes cuenta? Regístrate</a></p>
             </div>
-            <div class="mb-3">
-                <label>Contraseña</label>
-                <input type="password" name="password" class="form-control" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
-        </form>
-        <p><a href="registro.php">¿No tienes cuenta? Regístrate</a></p>
+        </div>
     </div>
+    <?php include '../plantillas/footer.php'; ?>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/main.js"></script>
 </body>
 </html>

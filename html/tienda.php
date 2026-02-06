@@ -37,11 +37,11 @@ session_start();
                             <?php if (isset($_SESSION['user_id'])) { ?>
                                 <form method="POST" action="carrito.php">
                                     <input type="hidden" name="producto_id" value="<?php echo $row['id']; ?>">
-                                    <div class="mb-2">
-                                        <label>Cantidad</label>
-                                        <input type="number" name="cantidad" value="1" min="1" max="<?php echo min(2, $row['stock']); ?>" class="form-control">
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Añadir al Carrito</button>
+                                            <div class="mb-2">
+                                                <label for="cantidad-<?php echo $row['id']; ?>">Cantidad</label>
+                                                <input id="cantidad-<?php echo $row['id']; ?>" type="number" name="cantidad" value="1" min="1" max="<?php echo min(2, $row['stock']); ?>" class="form-control">
+                                            </div>
+                                            <button type="submit" class="btn btn-primary" aria-label="Añadir <?php echo htmlspecialchars($row['nombre'], ENT_QUOTES); ?> al carrito">Añadir al Carrito</button>
                                 </form>
                             <?php } else { ?>
                                 <p>Inicia sesión para comprar.</p>

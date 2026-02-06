@@ -562,3 +562,66 @@ footer .container p {
   text-underline-offset: 4px !important;
   text-decoration-thickness: 3px !important;
 }
+
+/* High contrast mode para accesibilidad */
+.high-contrast {
+  --bg: #000000 !important;
+  --texto: #ffffff !important;
+  --fondo-tarjeta: #000000 !important;
+}
+
+.high-contrast a { color: #ffff00 !important; }
+.high-contrast .btn { background-color: #ffff00 !important; color: #000 !important; }
+.high-contrast :focus { outline: 3px solid #ffff00 !important; outline-offset: 2px; }
+
+/* Estilos consistentes para páginas de autenticación (login/registro) */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 480px;
+  background: var(--fondo-tarjeta);
+  color: var(--texto);
+  border-radius: 12px;
+  box-shadow: var(--shadow-azul);
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+.auth-card .card-body {
+  padding: 1.5rem;
+}
+
+.auth-card h2 {
+  margin-bottom: 1rem;
+  color: var(--tono-apagado);
+}
+
+.auth-card .form-control {
+  background: transparent;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+.auth-card .form-control:focus {
+  border-color: var(--azul-principal);
+  box-shadow: 0 0 0 0.2rem var(--focus);
+}
+
+.auth-card .btn-primary {
+  background: var(--azul-principal);
+  border-color: var(--azul-principal);
+  color: var(--texto-boton);
+}
+
+.auth-card .btn-primary:hover {
+  background: var(--azul-claro);
+  border-color: var(--azul-claro);
+}
+
+.auth-card .muted-link {
+  color: var(--gris-x);
+}

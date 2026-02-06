@@ -63,24 +63,24 @@ $result = $conn->query("SELECT id, nombre, descripcion, precio, stock FROM produ
         <h3>Subir Producto</h3>
         <form method="POST" enctype="multipart/form-data">
             <div class="mb-3">
-                <label>Nombre</label>
-                <input type="text" name="nombre" class="form-control" required>
+                <label for="nombre">Nombre</label>
+                <input id="nombre" type="text" name="nombre" class="form-control" required>
             </div>
             <div class="mb-3">
-                <label>Descripción</label>
-                <textarea name="descripcion" class="form-control"></textarea>
+                <label for="descripcion">Descripción</label>
+                <textarea id="descripcion" name="descripcion" class="form-control"></textarea>
             </div>
             <div class="mb-3">
-                <label>Precio</label>
-                <input type="number" step="0.01" name="precio" class="form-control" required>
+                <label for="precio">Precio</label>
+                <input id="precio" type="number" step="0.01" name="precio" class="form-control" required>
             </div>
             <div class="mb-3">
-                <label>Stock</label>
-                <input type="number" name="stock" class="form-control" required>
+                <label for="stock">Stock</label>
+                <input id="stock" type="number" name="stock" class="form-control" required>
             </div>
             <div class="mb-3">
-                <label>Imagen</label>
-                <input type="file" name="imagen" class="form-control" required>
+                <label for="imagen">Imagen</label>
+                <input id="imagen" type="file" name="imagen" class="form-control" required>
             </div>
             <button type="submit" name="subir" class="btn btn-primary">Subir</button>
         </form>
@@ -90,20 +90,20 @@ $result = $conn->query("SELECT id, nombre, descripcion, precio, stock FROM produ
         <form method="POST">
             <input type="hidden" name="id" value="<?php echo $producto_editar['id']; ?>">
             <div class="mb-3">
-                <label>Nombre</label>
-                <input type="text" name="nombre" class="form-control" value="<?php echo $producto_editar['nombre']; ?>" required>
+                <label for="nombre_ed">Nombre</label>
+                <input id="nombre_ed" type="text" name="nombre" class="form-control" value="<?php echo $producto_editar['nombre']; ?>" required>
             </div>
             <div class="mb-3">
-                <label>Descripción</label>
-                <textarea name="descripcion" class="form-control"><?php echo $producto_editar['descripcion']; ?></textarea>
+                <label for="descripcion_ed">Descripción</label>
+                <textarea id="descripcion_ed" name="descripcion" class="form-control"><?php echo $producto_editar['descripcion']; ?></textarea>
             </div>
             <div class="mb-3">
-                <label>Precio</label>
-                <input type="number" step="0.01" name="precio" class="form-control" value="<?php echo $producto_editar['precio']; ?>" required>
+                <label for="precio_ed">Precio</label>
+                <input id="precio_ed" type="number" step="0.01" name="precio" class="form-control" value="<?php echo $producto_editar['precio']; ?>" required>
             </div>
             <div class="mb-3">
-                <label>Stock</label>
-                <input type="number" name="stock" class="form-control" value="<?php echo $producto_editar['stock']; ?>" required>
+                <label for="stock_ed">Stock</label>
+                <input id="stock_ed" type="number" name="stock" class="form-control" value="<?php echo $producto_editar['stock']; ?>" required>
             </div>
             <button type="submit" name="editar" class="btn btn-warning">Actualizar</button>
             <a href="admin.php" class="btn btn-secondary">Cancelar</a>
@@ -139,5 +139,7 @@ $result = $conn->query("SELECT id, nombre, descripcion, precio, stock FROM produ
             </tbody>
         </table>
     </div>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/main.js"></script>
 </body>
 </html>

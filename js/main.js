@@ -9,3 +9,60 @@ window.cambiaModoColor = () => {
     // Guarda el estado en localStorage
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
 };
+
+// Accesibilidad: aumentar/disminuir texto y alto contraste
+(function() {
+    const ROOT = document.documentElement;
+    const STORAGE_KEY = 'accessibility';
+
+    function getSettings() {
+        try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch (e) { return {}; }
+    }
+
+    function saveSettings(s) { localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); }
+
+    function applySettings() {
+        const s = getSettings();
+        if (s.fontScale) {
+            ROOT.style.fontSize = s.fontScale + 'px';
+        }
+        if (s.highContrast) {
+            ROOT.classList.add('high-contrast');
+        } else {
+            ROOT.classList.remove('high-contrast');
+        }
+    }
+
+    function changeFont(delta) {
+        const current = parseFloat(getComputedStyle(ROOT).fontSize) || 16;
+        const next = Math.max(12, Math.min(24, Math.round(current + delta)));
+        const s = getSettings();
+        s.fontScale = next;
+        saveSettings(s);
+        applySettings();
+    }
+
+    function setHighContrast(on) {
+        const s = getSettings();
+        s.highContrast = !!on;
+        saveSettings(s);
+        applySettings();
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        applySettings();
+
+        const inc = document.getElementById('aumentar-texto');
+        const dec = document.getElementById('disminuir-texto');
+        const hcOn = document.getElementById('alto-contraste');
+        const hcOff = document.getElementById('contraste-normal');
+
+        if (inc) inc.addEventListener('click', function(e){ e.preventDefault(); changeFont(2); });
+        if (dec) dec.addEventListener('click', function(e){ e.preventDefault(); changeFont(-2); });
+        if (hcOn) hcOn.addEventListener('click', function(e){ e.preventDefault(); setHighContrast(true); });
+        if (hcOff) hcOff.addEventListener('click', function(e){ e.preventDefault(); setHighContrast(false); });
+    });
+
+    // Export for debugging/tests
+    window.__accessibility = { changeFont, setHighContrast, applySettings };
+})();
