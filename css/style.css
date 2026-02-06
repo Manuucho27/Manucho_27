@@ -226,7 +226,7 @@ footer .container p {
   background-color: var(--fondo-tarjeta);
   color: var(--texto);
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all 0.6s ease;
   box-shadow: var(--shadow-azul);
 }
 
@@ -237,6 +237,78 @@ footer .container p {
 
 .enlaces-redes-f a i {
   font-size: 1.5rem;
+}
+
+/* Formularios e inputs */
+input[type="text"], input[type="email"], input[type="password"], input[type="number"],
+textarea, select, .form-control {
+  background-color: var(--fondo-tarjeta);
+  color: var(--texto);
+  border: 1px solid rgba(0,0,0,0.08);
+  padding: .5rem .75rem;
+  border-radius: .375rem;
+  box-shadow: var(--shadow-azul);
+  transition: box-shadow .18s ease, border-color .12s ease, transform .12s ease;
+}
+
+input[type="text"]::placeholder, input[type="email"]::placeholder, input[type="password"]::placeholder,
+textarea::placeholder {
+  color: rgba(15,15,15,0.45);
+}
+
+.dark-mode input[type="text"], .dark-mode input[type="email"], .dark-mode input[type="password"],
+.dark-mode input[type="number"], .dark-mode textarea, .dark-mode select, .dark-mode .form-control {
+  background-color: var(--fondo-tarjeta);
+  color: var(--texto);
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: var(--shadow-azul);
+}
+
+.dark-mode input[type="text"]::placeholder, .dark-mode input[type="email"]::placeholder, .dark-mode input[type="password"]::placeholder,
+.dark-mode textarea::placeholder {
+  color: rgba(233,241,245,0.55);
+}
+
+input:focus, textarea:focus, select:focus, .form-control:focus {
+  outline: none;
+  border-color: var(--azul-principal);
+  box-shadow: 0 0 0 6px var(--focus);
+}
+
+/* Autofill fixes for Chrome */
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+  -webkit-text-fill-color: var(--texto) !important;
+  box-shadow: 0 0 0px 1000px var(--fondo-tarjeta) inset !important;
+}
+
+input[disabled], textarea[disabled], .form-control[disabled], input[readonly], textarea[readonly] {
+  opacity: 0.85;
+}
+
+/* Forzar uso de la variable de texto en títulos y párrafos dentro del contenido principal
+   Esto para buena legibilidad en modo oscuro y claro usando */
+.container h1, .container h2, .container h3, .container h4, .container h5, .container h6,
+.container p, .container .card-title, .container .card-text, main .container p {
+  color: var(--texto) !important;
+}
+
+/* Asegurar títulos en páginas principales fuera de .container */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--texto);
+}
+
+/* Formularios y labels también deben seguir la variable */
+label, .form-label {
+  color: var(--texto);
+}
+
+/* Estilo del logo que sigue al cursor */
+#cursor-logo {
+  transform: translate(-0%, -0%);
+  will-change: left, top, transform;
+  mix-blend-mode: normal;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  border-radius: 6px;
 }
 
 /* Colores específicos para cada red social */

@@ -77,10 +77,10 @@ if (session_status() == PHP_SESSION_NONE) {
                         Accesibilidad
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accesibilidadDropdown">
-                        <li><a class="dropdown-item" href="#" id="aumentar-texto">Aumentar texto</a></li>
-                        <li><a class="dropdown-item" href="#" id="disminuir-texto">Disminuir texto</a></li>
-                        <li><a class="dropdown-item" href="#" id="alto-contraste">Alto contraste</a></li>
-                        <li><a class="dropdown-item" href="#" id="contraste-normal">Contraste normal</a></li>
+                        <li><a class="dropdown-item" id="aumentar-texto">Aumentar texto</a></li>
+                        <li><a class="dropdown-item" id="disminuir-texto">Disminuir texto</a></li>
+                        <li><a class="dropdown-item" id="alto-contraste">Alto contraste</a></li>
+                        <li><a class="dropdown-item" id="contraste-normal">Contraste normal</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>

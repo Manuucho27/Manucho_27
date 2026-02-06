@@ -66,3 +66,34 @@ window.cambiaModoColor = () => {
     // Export for debugging/tests
     window.__accessibility = { changeFont, setHighContrast, applySettings };
 })();
+
+// Custom cursor logo: muestra el logo en la esquina inferior derecha del puntero
+(function() {
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return; // no en pantallas táctiles
+
+    const logo = document.createElement('img');
+    logo.id = 'cursor-logo';
+    logo.src = '/Manucho27/img/iconos/favicon.png';
+    logo.alt = 'logo';
+    logo.style.position = 'fixed';
+    logo.style.width = '36px';
+    logo.style.height = '36px';
+    logo.style.pointerEvents = 'none';
+    logo.style.zIndex = 999999;
+    logo.style.transition = 'transform .08s linear, opacity .12s linear';
+    logo.style.opacity = '0.95';
+    document.body.appendChild(logo);
+
+    const offset = 10; // distancia desde el puntero hacia abajo-derecha
+
+    function move(e) {
+        const x = e.clientX + offset;
+        const y = e.clientY + offset;
+        logo.style.left = x + 'px';
+        logo.style.top = y + 'px';
+    }
+
+    document.addEventListener('mousemove', move);
+    document.addEventListener('mouseleave', function(){ logo.style.opacity = '0'; });
+    document.addEventListener('mouseenter', function(){ logo.style.opacity = '0.95'; });
+})();

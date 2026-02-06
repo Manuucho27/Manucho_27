@@ -10,7 +10,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt = $conn->prepare("INSERT INTO usuarios (nombre, email, password) VALUES (?, ?, ?)");
     $stmt->bind_param("sss", $nombre, $email, $password);
     if ($stmt->execute()) {
-        header("Location: login.php");
+        // Auto-login: obtener id y crear token de recuerdo
+        $user_id = $conn->insert_id;
+        $_SESSION['user_id'] = $user_id;
+        $_SESSION['rol'] = 'usuario';
+        // Sólo crear remember token/cookie si el usuario marca 'remember'
+        if (!empty($_POST['remember'])) {
+            $token = bin2hex(random_bytes(32));
+            $stmt2 = $conn->prepare("UPDATE usuarios SET remember_token = ? WHERE id = ?");
+            if ($stmt2) {
+                $stmt2->bind_param("si", $token, $user_id);
+                $stmt2->execute();
+                setcookie('remember', $token, time() + (30*24*60*60), '/', '', false, true);
+            }
+        }
+        header("Location: tienda.php");
         exit();
     } else {
         $error = "Error al registrar.";
@@ -48,6 +62,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class="mb-3">
                         <label for="password">Contraseña</label>
                         <input id="password" type="password" name="password" class="form-control" required>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="remember" name="remember">
+                        <label class="form-check-label" for="remember">Recordarme</label>
                     </div>
                     <button type="submit" class="btn btn-primary">Registrarse</button>
                 </form>

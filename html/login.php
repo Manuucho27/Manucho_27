@@ -16,6 +16,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (password_verify($password, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['rol'] = $user['rol'];
+            // Sólo generar token de recuerdo y cookie si marcó 'remember'
+            if (!empty($_POST['remember'])) {
+                $token = bin2hex(random_bytes(32));
+                $stmt2 = $conn->prepare("UPDATE usuarios SET remember_token = ? WHERE id = ?");
+                if ($stmt2) {
+                    $stmt2->bind_param("si", $token, $user['id']);
+                    $stmt2->execute();
+                    setcookie('remember', $token, time() + (30*24*60*60), '/', '', false, true);
+                }
+            }
             header("Location: tienda.php");
             exit();
         } else {
@@ -53,6 +63,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class="mb-3">
                         <label for="password">Contraseña</label>
                         <input id="password" type="password" name="password" class="form-control" required>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="remember" name="remember">
+                        <label class="form-check-label" for="remember">Recordarme</label>
                     </div>
                     <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
                 </form>
