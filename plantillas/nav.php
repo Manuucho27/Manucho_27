@@ -1,3 +1,9 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+?>
 <nav id="menu" class="navbar navbar-expand-lg">
     <?php
     $path = parse_url(
