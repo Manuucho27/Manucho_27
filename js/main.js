@@ -76,8 +76,8 @@ window.cambiaModoColor = () => {
     logo.src = '/Manucho27/img/iconos/favicon.png';
     logo.alt = 'logo';
     logo.style.position = 'fixed';
-    logo.style.width = '36px';
-    logo.style.height = '36px';
+    logo.style.width = '28px';
+    logo.style.height = '28px';
     logo.style.pointerEvents = 'none';
     logo.style.zIndex = 999999;
     logo.style.transition = 'transform .08s linear, opacity .12s linear';
