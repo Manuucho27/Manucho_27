@@ -743,6 +743,7 @@ label, .form-label {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
+  line-clamp: 4;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
 }
@@ -753,7 +754,11 @@ label, .form-label {
 
 @media (max-width: 767px) {
   .tienda .card-img-top { height: 240px; }
-  .tienda .card-body .descripcion { -webkit-line-clamp: 3; min-height: 3rem; }
+  .tienda .card-body .descripcion { 
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+    min-height: 3rem;
+  }
 }
 
 /* Fin estilos tienda */
