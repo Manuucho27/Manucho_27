@@ -766,3 +766,156 @@ label, .form-label {
 .auth-card .muted-link {
   color: var(--gris-x);
 }
+
+/* ===== Reglas específicas para la zona de administración (CRUD) ===== */
+.admin-card {
+  background: linear-gradient(180deg, var(--fondo-tarjeta), var(--bg));
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 8px;
+}
+
+.admin-title {
+  color: var(--tono-apagado);
+  margin-bottom: 1rem;
+}
+
+.crud-actions .btn {
+  margin-right: .4rem;
+}
+
+.btn[disabled], button[disabled] {
+  opacity: 0.65;
+  cursor: not-allowed;
+  box-shadow: none !important;
+}
+
+/* Ajustes responsivos para tablas en admin */
+.admin-card .table-responsive {
+  margin-top: .75rem;
+}
+
+/* Pequeños ajustes de altura para inputs dentro del admin */
+.admin-card .form-control {
+  min-height: 42px;
+}
+
+/* Estilos para filas del CRUD dentro de admin para seguir variables del sitio */
+.admin-card table.table th,
+.admin-card table.table td {
+  background-color: var(--fondo-tarjeta);
+  color: var(--texto) !important;
+  vertical-align: middle;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+.admin-card table.table thead th {
+  background: transparent;
+  color: var(--tono-apagado);
+  border-bottom: 2px solid rgba(0,0,0,0.06);
+}
+
+/* Botón editar con color principal */
+.btn-edit {
+  background-color: var(--azul-principal);
+  color: var(--texto-boton);
+  border-color: transparent;
+}
+
+.btn-edit:hover, .btn-edit:focus {
+  background-color: var(--azul-claro);
+  color: var(--texto-boton);
+  box-shadow: 0 6px 18px rgba(41,198,255,0.12);
+}
+
+.dark-mode .btn-edit {
+  color: var(--texto-boton-oscuro);
+}
+
+.btn-restaurar {
+  background-color: var(--verde-spoti);
+  color: var(--texto-boton);
+  border-color: transparent;
+}
+
+.btn-restaurar:hover, .btn-restaurar:focus {
+  background-color: #1ed760cc;
+  color: var(--texto-boton);
+  box-shadow: 0 6px 18px rgba(30,215,112,0.12);
+}
+
+.btn-eliminar {
+  background-color: var(--rosa-secundario);
+  color: var(--texto-boton);
+  border-color: transparent;
+}
+
+.btn-eliminar:hover, .btn-eliminar:focus {
+  background-color: #cd2b6ecc;
+  color: var(--texto-boton);
+  box-shadow: 0 6px 18px rgba(205,43,110,0.12);
+}
+
+.btn-actualizar {
+  background-color: var(--tono-apagado);
+  color: var(--texto-boton);
+  border-color: transparent;
+}
+
+.btn-actualizar:hover, .btn-actualizar:focus {
+  background-color: #017199cc;
+  color: var(--texto-boton);
+  border-color: transparent;
+  box-shadow: 0 6px 18px rgba(1,113,153,0.12);
+}
+
+.btn-cancelar {
+  background-color: var(--gris-x);
+  color: var(--texto-boton);
+  border-color: transparent;
+
+}
+.btn-cancelar:hover, .btn-cancelar:focus {
+  background-color: #9e9e9ecc;
+  color: var(--texto-boton);
+  box-shadow: 0 6px 18px rgba(158,158,158,0.12);
+}
+
+.btn-subir{
+  background-color: var(--azul-principal);
+  color: var(--texto-boton);
+  border-color: transparent;
+}
+.btn-subir:hover, .btn-subir:focus {
+  background-color: var(--azul-claro);
+  color: var(--texto-boton);
+  border-color: transparent;
+  box-shadow: 0 6px 18px rgba(41,198,255,0.12);
+}
+
+#imagen::file-selector-button {
+  background-color: var(--azul-principal);
+  color: var(--texto-boton);
+  border: 1px;
+  border-color: var(--azul-principal);
+  padding: .375rem .75rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#imagen::-webkit-file-upload-button {
+  background-color: var(--azul-principal);
+  color: var(--texto-boton);
+  border: 1px;
+  border-color: var(--azul-principal);
+  padding: .375rem .75rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#imagen::file-selector-button:hover {
+  background-color: var(--azul-claro);
+}
+
+#imagen::-webkit-file-upload-button:hover {
+  background-color: var(--azul-claro);
+}

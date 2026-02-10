@@ -3,11 +3,13 @@ session_start();
 include '../php/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = $_POST['email'];
+    // Permitimos iniciar sesión con email o con username.
+    $login = trim($_POST['login']);
     $password = $_POST['password'];
 
-    $stmt = $conn->prepare("SELECT id, password, rol FROM usuarios WHERE email = ?");
-    $stmt->bind_param("s", $email);
+    // Buscamos por email o por username (ambos únicos en la tabla).
+    $stmt = $conn->prepare("SELECT id, password, rol FROM usuarios WHERE email = ? OR username = ? LIMIT 1");
+    $stmt->bind_param("ss", $login, $login);
     $stmt->execute();
     $result = $stmt->get_result();
 
@@ -57,8 +59,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <?php if (isset($error)) echo "<div class='alert alert-danger' role='alert' aria-live='assertive'>$error</div>"; ?>
                 <form method="POST" aria-label="Formulario de inicio de sesión">
                     <div class="mb-3">
-                        <label for="email">Email</label>
-                        <input id="email" type="email" name="email" class="form-control" required>
+                        <label for="login">Usuario o Email</label>
+                        <input id="login" type="text" name="login" class="form-control" required>
                     </div>
                     <div class="mb-3">
                         <label for="password">Contraseña</label>

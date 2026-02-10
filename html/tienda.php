@@ -17,7 +17,7 @@ session_start();
 <body>
     <?php
     include '../php/config.php';
-    $result = $conn->query("SELECT * FROM productos");
+    $result = $conn->query("SELECT id, nombre, descripcion, precio, stock, imagen, imagen_tipo FROM productos WHERE activo = 1");
     ?>
     <?php include '../plantillas/nav.php'; ?>
 

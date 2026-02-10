@@ -4,11 +4,13 @@ include '../php/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nombre = $_POST['nombre'];
+    $username = trim($_POST['username']);
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-    $stmt = $conn->prepare("INSERT INTO usuarios (nombre, email, password) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $nombre, $email, $password);
+    // Insertar con username además de nombre y email
+    $stmt = $conn->prepare("INSERT INTO usuarios (nombre, username, email, password) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("ssss", $nombre, $username, $email, $password);
     if ($stmt->execute()) {
         // Auto-login: obtener id y crear token de recuerdo
         $user_id = $conn->insert_id;
@@ -55,6 +57,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <label for="nombre">Nombre</label>
                         <input id="nombre" type="text" name="nombre" class="form-control" required>
                     </div>
+                        <div class="mb-3">
+                            <label for="username">Nombre de usuario</label>
+                            <input id="username" type="text" name="username" class="form-control" required>
+                        </div>
                     <div class="mb-3">
                         <label for="email">Email</label>
                         <input id="email" type="email" name="email" class="form-control" required>

@@ -28,11 +28,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['producto_id'])) {
     $producto_id = $_POST['producto_id'];
     $cantidad = min($_POST['cantidad'], 2); // Máximo 2
 
-    // Verificar stock disponible
-    $stmt = $conn->prepare("SELECT stock FROM productos WHERE id = ?");
+    // Verificar stock disponible y que el producto esté activo
+    $stmt = $conn->prepare("SELECT stock, activo FROM productos WHERE id = ?");
     $stmt->bind_param("i", $producto_id);
     $stmt->execute();
-    $stock = $stmt->get_result()->fetch_assoc()['stock'];
+    $product = $stmt->get_result()->fetch_assoc();
+    if (!$product || intval($product['activo']) === 0) {
+        // Producto no disponible o inactivo
+        header("Location: tienda.php");
+        exit();
+    }
+    $stock = $product['stock'];
     $cantidad = min($cantidad, $stock); // No más que stock
 
     if ($cantidad > 0) {
@@ -78,6 +84,14 @@ if (isset($_GET['completar'])) {
     // Reducir stock
     $stmt = $conn->prepare("UPDATE productos p JOIN carrito_productos cp ON p.id = cp.producto_id SET p.stock = p.stock - cp.cantidad WHERE cp.carrito_id = ?");
     $stmt->bind_param("i", $carrito_id);
+    $stmt->execute();
+
+    // Marcar como inactivos los productos cuyo stock llegó a 0 o menos
+    $stmt = $conn->prepare("UPDATE productos SET activo = 0 WHERE stock <= 0");
+    $stmt->execute();
+
+    // Eliminar de todos los carritos las referencias a productos inactivos
+    $stmt = $conn->prepare("DELETE cp FROM carrito_productos cp JOIN productos p ON cp.producto_id = p.id WHERE p.activo = 0");
     $stmt->execute();
 
     // Vaciar carrito
