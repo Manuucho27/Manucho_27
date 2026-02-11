@@ -808,6 +808,32 @@ label, .form-label {
   border-top: 1px solid rgba(0,0,0,0.06);
 }
 
+/* Galería: thumbs que adaptan imágenes más pequeñas al contenedor */
+.gallery-grid .photo-thumb {
+  position: relative;
+  width: 100%;
+  /* altura fija relativa para mantener cuadrícula agradable (3:2) */
+  padding-top: 66.6667%;
+  overflow: hidden;
+  background-color: #f3f3f3;
+}
+
+.gallery-grid .photo-thumb img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* escala y recorta para cubrir el contenedor */
+  object-position: center;
+  display: block;
+}
+
+/* Alternativa para miniaturas cuadradas */
+@media (max-width: 768px) {
+  .gallery-grid .photo-thumb { padding-top: 75%; }
+}
+
 .admin-card table.table thead th {
   background: transparent;
   color: var(--tono-apagado);

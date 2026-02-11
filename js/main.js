@@ -97,3 +97,63 @@ window.cambiaModoColor = () => {
     document.addEventListener('mouseleave', function(){ logo.style.opacity = '0'; });
     document.addEventListener('mouseenter', function(){ logo.style.opacity = '0.95'; });
 })();
+
+// Cargar controladores de formulario según la página actual
+// Injector que crea un script module y realiza imports dinámicos según la página
+(function () {
+    const moduleSource = `(async function(){
+        try {
+            const hasRegistro = document.getElementById('nombre') && document.getElementById('username') && document.getElementById('email') && document.getElementById('password');
+            const hasContacto = document.getElementById('contacto');
+
+            if (hasRegistro) {
+                const ui = await import('/Manucho27/js/ui.js');
+                const v = await import('/Manucho27/js/validaciones.js');
+                const reg = await import('/Manucho27/js/registroFormController.js');
+                if (reg && typeof reg.initializeRegistroFormController === 'function') reg.initializeRegistroFormController();
+            }
+
+            if (hasContacto) {
+                const ui = await import('/Manucho27/js/ui.js');
+                const v = await import('/Manucho27/js/validaciones.js');
+                const c = await import('/Manucho27/js/contactFormController.js');
+                if (c && typeof c.initializeContactFormController === 'function') c.initializeContactFormController();
+            }
+
+            // Form controllers for admin (subir producto / editar producto)
+            const hasAdminUpload = document.getElementById('imagen');
+            const hasAdminEdit = document.getElementById('nombre_ed') || document.getElementById('precio_ed') || document.getElementById('stock_ed');
+            if (hasAdminUpload) {
+                const ui = await import('/Manucho27/js/ui.js');
+                const subir = await import('/Manucho27/js/subirFicheroFormController.js');
+                if (subir && typeof subir.initializeSubirFicheroFormController === 'function') subir.initializeSubirFicheroFormController();
+            }
+            if (hasAdminEdit) {
+                const ui = await import('/Manucho27/js/ui.js');
+                const act = await import('/Manucho27/js/actualizarFicheroFormController.js');
+                if (act && typeof act.initializeActualizarFicheroFormController === 'function') act.initializeActualizarFicheroFormController();
+            }
+
+            // User profile/forms generic
+            const hasUserForm = document.querySelector('form.user-form') || document.querySelector('form[data-user-form]');
+            if (hasUserForm) {
+                const ui = await import('/Manucho27/js/ui.js');
+                const v = await import('/Manucho27/js/validaciones.js');
+                const u = await import('/Manucho27/js/userFormController.js');
+                if (u && typeof u.initializeUserFormController === 'function') u.initializeUserFormController();
+            }
+        } catch (e) {
+            console.warn('dynamic module loader error', e);
+        }
+    })();`;
+
+    function injectModule(srcCode) {
+        const s = document.createElement('script');
+        s.type = 'module';
+        s.textContent = srcCode;
+        document.head.appendChild(s);
+    }
+
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { injectModule(moduleSource); });
+    else injectModule(moduleSource);
+})();
