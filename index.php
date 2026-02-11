@@ -1,3 +1,51 @@
+<?php
+include 'php/config.php';
+
+/*
+ * Cookie: contadorEntradas
+ * - Mantener un contador del número de veces que se ha cargado la página principal
+ *   en este equipo/cliente. No es un contador global,
+ *   solo local al navegador que visita (se almacena en una cookie del cliente)
+ * - Si ya existe la cookie se incrementa en 1, si no existe
+ *   se crea con valor 1.
+ * - Caducidad: 10 años (se configura largo para que esté "siempre presente")
+ */
+$contadorName = 'contadorEntradas';
+if (isset($_COOKIE[$contadorName])) {
+    $contador = intval($_COOKIE[$contadorName]) + 1;
+} else {
+    $contador = 1;
+}
+// Caducidad larga para que esté "siempre presente" (10 años)
+setcookie($contadorName, (string)$contador, time() + (10 * 365 * 24 * 60 * 60), "/");
+
+
+/*
+ * Cookie: userName
+ * - Almacenar una usuario (nombre o username)
+ * - Solo se crea/actualiza si el usuario tiene sesión activa (`$_SESSION['user_id']`)
+ * - Caducidad: 30 días. No contiene credenciales ni información sensible, solo userName
+ */
+$userCookieName = 'userName';
+if (isset($_SESSION['user_id'])) {
+    $uid = intval($_SESSION['user_id']);
+    if (isset($conn)) {
+        $stmt = $conn->prepare("SELECT nombre, username FROM usuarios WHERE id = ? LIMIT 1");
+        if ($stmt) {
+            $stmt->bind_param("i", $uid);
+            $stmt->execute();
+            $res = $stmt->get_result();
+            if ($res && $res->num_rows > 0) {
+                $u = $res->fetch_assoc();
+                $name = !empty($u['nombre']) ? $u['nombre'] : $u['username'];
+                // Cookie duración razonable (30 días)
+                setcookie($userCookieName, $name, time() + (30 * 24 * 60 * 60), "/");
+            }
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

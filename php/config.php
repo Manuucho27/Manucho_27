@@ -20,7 +20,23 @@ if ($check && $check->num_rows == 0) {
     $conn->query("ALTER TABLE usuarios ADD COLUMN remember_token VARCHAR(255) NULL");
 }
 
-// Restaurar sesión desde cookie 'userCookie' si existe y no hay sesión
+
+/*
+ * Restaurar sesión desde cookie 'userCookie'
+ * - Implementar un mecanismo "remember me" (login persistente)
+ *   Cuando en el login se crea y guarda un token en la tabla `usuarios` (campo
+ *   `remember_token`) y se envía el mismo token al navegador como cookie
+ *   (`userCookie`), este bloque permite restaurar la sesión automáticamente
+ *   si la cookie está presente y no existe sesión iniciada
+ * - En resumen:
+ *   1) El navegador envía la cookie `userCookie` con un token.
+ *   2) Si no hay sesión activa, buscamos en la tabla `usuarios` un usuario
+ *      cuyo `remember_token` coincida con ese token.
+ *   3) Si se encuentra, se recrea `$_SESSION['user_id']` y `$_SESSION['rol']`
+ *   - El token será largo y generado aleatoriamente (no predecible)
+ *   - Si el usuario cierra sesión (logout), eliminamos el token tanto
+ *     en la cookie como en la base de datos (borrar `remember_token` para ese usuario)
+ */
 if (!isset($_SESSION['user_id']) && !empty(
     $_COOKIE['userCookie']
 )) {
