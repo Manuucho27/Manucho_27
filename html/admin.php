@@ -1,5 +1,4 @@
 <?php
-// Hola! Aquí empieza la página de administración.
 // `session_start()` abre la sesión para saber quién está conectado.
 session_start();
 // Incluimos la configuración de la base de datos para poder usar `$conn`.

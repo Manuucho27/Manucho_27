@@ -10,7 +10,7 @@ if (isset($_SESSION['user_id'])) {
 	}
 }
 // Borrar cookie y destruir sesión
-setcookie('userCookie', '', time() - 3600, '/', '', false, true);
+setcookie('remember', '', time() - 3600, '/', '', false, true);
 session_unset();
 session_destroy();
 header("Location: ../index.php");

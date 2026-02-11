@@ -22,7 +22,7 @@ if ($check && $check->num_rows == 0) {
 
 
 /*
- * Restaurar sesión desde cookie 'userCookie'
+ * Restaurar sesión desde cookie 'remember'
  * - Implementar un mecanismo "remember me" (login persistente)
  *   Cuando en el login se crea y guarda un token en la tabla `usuarios` (campo
  *   `remember_token`) y se envía el mismo token al navegador como cookie
@@ -37,10 +37,8 @@ if ($check && $check->num_rows == 0) {
  *   - Si el usuario cierra sesión (logout), eliminamos el token tanto
  *     en la cookie como en la base de datos (borrar `remember_token` para ese usuario)
  */
-if (!isset($_SESSION['user_id']) && !empty(
-    $_COOKIE['userCookie']
-)) {
-    $token = $_COOKIE['userCookie'];
+if (!isset($_SESSION['user_id']) && !empty($_COOKIE['remember'])) {
+    $token = $_COOKIE['remember'];
     $stmt = $conn->prepare("SELECT id, rol FROM usuarios WHERE remember_token = ? LIMIT 1");
     if ($stmt) {
         $stmt->bind_param("s", $token);
