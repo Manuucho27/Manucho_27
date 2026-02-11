@@ -10,3 +10,6 @@
 /httpRequests/
 Manucho_27.iml
 modules.xml
+copilot.data.migration.agent.xml
+copilot.data.migration.ask.xml
+copilot.data.migration.edit.xml
