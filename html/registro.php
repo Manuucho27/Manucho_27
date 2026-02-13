@@ -1,35 +1,52 @@
 <?php
 session_start();
 include '../php/config.php';
+include '../php/register.php';
 
+// En vez de mezclar validación y lógica directamente en la página,
+// reutilizamos `validate_registration` y `generate_remember_token`.
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $nombre = $_POST['nombre'];
-    $username = trim($_POST['username']);
-    $email = $_POST['email'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $data = [
+        'nombre' => $_POST['nombre'] ?? '',
+        'username' => $_POST['username'] ?? '',
+        'email' => $_POST['email'] ?? '',
+        'password' => $_POST['password'] ?? ''
+    ];
 
-    // Insertar con username además de nombre y email
-    $stmt = $conn->prepare("INSERT INTO usuarios (nombre, username, email, password) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("ssss", $nombre, $username, $email, $password);
-    if ($stmt->execute()) {
-        // Auto-login: obtener id y crear token de recuerdo
-        $user_id = $conn->insert_id;
-        $_SESSION['user_id'] = $user_id;
-        $_SESSION['rol'] = 'usuario';
-        // Sólo crear remember token/cookie si el usuario marca 'remember'
-        if (!empty($_POST['remember'])) {
-            $token = bin2hex(random_bytes(32));
-            $stmt2 = $conn->prepare("UPDATE usuarios SET remember_token = ? WHERE id = ?");
-            if ($stmt2) {
-                $stmt2->bind_param("si", $token, $user_id);
-                $stmt2->execute();
-                setcookie('remember', $token, time() + (30*24*60*60), '/', '', false, true);
+    $errors = validate_registration($data);
+
+    if (empty($errors)) {
+        $nombre = $data['nombre'];
+        $username = trim($data['username']);
+        $email = $data['email'];
+        $password = password_hash($data['password'], PASSWORD_DEFAULT);
+
+        // Insertar con username además de nombre y email
+        $stmt = $conn->prepare("INSERT INTO usuarios (nombre, username, email, password) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $nombre, $username, $email, $password);
+        if ($stmt->execute()) {
+            // Auto-login: obtener id y crear token de recuerdo
+            $user_id = $conn->insert_id;
+            $_SESSION['user_id'] = $user_id;
+            $_SESSION['rol'] = 'usuario';
+            // Sólo crear remember token/cookie si el usuario marca 'remember'
+            if (!empty($_POST['remember'])) {
+                $token = generate_remember_token();
+                $stmt2 = $conn->prepare("UPDATE usuarios SET remember_token = ? WHERE id = ?");
+                if ($stmt2) {
+                    $stmt2->bind_param("si", $token, $user_id);
+                    $stmt2->execute();
+                    setcookie('remember', $token, time() + (30*24*60*60), '/', '', false, true);
+                }
             }
+            header("Location: tienda.php");
+            exit();
+        } else {
+            $error = "Error al registrar.";
         }
-        header("Location: tienda.php");
-        exit();
     } else {
-        $error = "Error al registrar.";
+        // Mostrar primero error simple al usuario
+        $error = implode('<br>', $errors);
     }
 }
 ?>

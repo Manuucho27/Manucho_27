@@ -1,0 +1,1 @@
+{"version":1,"defects":[],"times":{"RegisterTest::testValidateRegistrationSuccess":0.004,"RegisterTest::testValidateRegistrationMissingFields":0.001,"RegisterTest::testGenerateRememberTokenLength":0.001}}
